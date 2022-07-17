@@ -72,7 +72,7 @@ class JalanController extends Controller
     {
         $data = Jalan::find($id);
         if( !$data ) return back()->with('error', 'Data jalan tidak ditemukan');
-
+        // dd($data->struktur[0]->panjang);
         return view('admin.jalan.show',compact('data'));
     }
 

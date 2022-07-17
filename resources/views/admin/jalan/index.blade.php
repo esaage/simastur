@@ -15,12 +15,10 @@
                   <table id="table1" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                      <th>Nomor Urut</th>
                       <th>Nomor Ruas</th>
-                      <th>Nama Pangkal Ruas</th>
-                      <th>Nama Ujung Ruas</th>
-                      <th>Panjang Ruas</th>
-                      <th>Panjang Kerusakan</th>
+                      <th>Nama Ruas</th>
+                      <th>Panjang & Lebar Ruas</th>
+                      <th>Kecamatan</th>
                       <th><i class="fa fa-cogs"></i></th>
                     </tr>
                     </thead>
@@ -30,20 +28,21 @@
                         <tr>
                           <td>
                             <a href="/admin/jalan/{{ $item->id }}" style="text-decoration: underline">
-                              {{ $item->nomor_urut }}
+                              {{ $item->nomor_ruas }}
                             </a>
                           </td>
-                          <td>{{ $item->nomor_ruas }}</td>
-                          <td>{{ $item->nama_pangkal_ruas }}</td>
-                          <td>{{ $item->nama_ujung_ruas }}</td>
-                          <td>{{ $item->panjang_ruas }}</td>
-                          <td>{{ $item->panjang_kerusakan }} Km</td>
+                          <td>{{ $item->nama_ruas }}</td>
+                          <td> Panjang {{ $item->panjang_ruas }} Km, Lebar {{ $item->lebar_ruas }} Km</td>
+                          <td>{{ $item->kecamatan->nama }}</td>
                           <td>
                             <div class="row justify-content-center">
-                              <div class="col-md-3">
-                                <a href="/admin/jalan/{{ $item->id }}/edit" class="btn btn-info btn-sm"><i class="fa fa-edit"></i></a>
+                              <div class="col-md-2">
+                                <a href="/admin/jalan/{{ $item->id }}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i></a>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-2">
+                                <a href="/admin/jalan/{{ $item->id }}/edit" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
+                              </div>
+                              <div class="col-md-2">
                                 <form action="/admin/jalan/{{ $item->id }}" method="post">
                                   @csrf
                                   <input type="hidden" name="_method" value="delete">
@@ -56,17 +55,6 @@
                         </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                      <tr>
-                        <th>Nomor Urut</th>
-                        <th>Nomor Ruas</th>
-                        <th>Nama Pangkal Ruas</th>
-                        <th>Nama Ujung Ruas</th>
-                        <th>Panjang Ruas</th>
-                        <th>Panjang Kerusakan</th>
-                        <th><i class="fa fa-cogs"></i></th>
-                      </tr>
-                    </tfoot>
                   </table>
                 </div>
                 <!-- /.box-body -->

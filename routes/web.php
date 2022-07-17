@@ -40,10 +40,7 @@ Route::get('/maps/jalan/{id}', [JalanController::class, 'data_jalan']); // Get d
 Route::prefix('admin')->middleware([AuthMiddleware::class])->group( function () {
 
     Route::get('dashboard', [DashboardController::class, 'index']);
-    // Route::get('dashboard', function () {
-    //     return view('layout.back.index');
-
-    // });
+    
     Route::resource('jalan', JalanController::class);
 
 });

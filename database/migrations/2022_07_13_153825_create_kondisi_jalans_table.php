@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('kondisi_jalans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('jalan_id')->constrained('jalans');
             $table->enum('kondisi',['baik','sedang','rusak ringan','rusak berat']);
             $table->char('panjang');
             $table->char('persentase');
